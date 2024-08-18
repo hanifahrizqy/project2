@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:12
+    container_name: postgres-test-db
+    environment:
+      PGDATA: /var/lib/postgresql/data
+      POSTGRES_PASSWORD: pg_strong_password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dvdrental:/dvdrental
+      - dbt-postgres:/var/lib/postgresql/data
+
+volumes:
+  dbt-postgres:
